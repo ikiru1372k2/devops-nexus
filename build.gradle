@@ -1,0 +1,56 @@
+plugins {
+    id 'java'
+    id 'application'
+    id 'maven-publish'
+}
+
+version = '1.0-SNAPSHOT'
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            from components.java
+            artifactId = 'simple-gradle-java-app'
+        }
+    }
+
+    repositories {
+        maven {
+            name = 'NexusRepository'
+            url = uri('http://3.108.218.251:8081/repository/maven-snapshots/')
+            allowInsecureProtocol = true
+            credentials {
+                username = project.findProperty('repoUser') ?: 'defaultUser'
+                password = project.findProperty('repoPassword') ?: 'defaultPassword'
+            }
+        }
+    }
+}
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    implementation 'com.google.guava:guava:28.1-jre'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.5.2'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.5.2'
+}
+
+application {
+    mainClass.set('simple.gradle.java.app.App')
+}
+
+test {
+    useJUnitPlatform()
+}
+
+task projectUpper {
+    group = 'Custom Tasks'
+    description = 'Task to get Project Name and Convert it to upper case'
+    doLast {
+        String projectName = project.name
+        println "Project Name: $projectName"
+        println "Upper case: ${projectName.toUpperCase()}"
+    }
+}

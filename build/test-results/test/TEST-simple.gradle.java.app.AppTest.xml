@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="simple.gradle.java.app.AppTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2024-08-12T18:10:15" hostname="LAPTOP-LCCRPPNC" time="0.015">
+  <properties/>
+  <testcase name="getSum()" classname="simple.gradle.java.app.AppTest" time="0.01"/>
+  <testcase name="main()" classname="simple.gradle.java.app.AppTest" time="0.004"/>
+  <system-out><![CDATA[Sum is 9
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
